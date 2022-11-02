@@ -35,6 +35,6 @@ jobs:
       - run: mkdir -p opencv/build
       - run: cd opencv/build && cmake -DBUILD_SHARED_LIBS=off -DOPENCV_FORCE_3RDPARTY_BUILD=on -DBUILD_LIST=core,dnn,imgcodecs -DCMAKE_INSTALL_PREFIX=install -DCMAKE_BUILD_TYPE=RELEASE ..  && cmake --build . --target install -j 8
       - uses: actions-rust-lang/setup-rust-toolchain@v1
-      - run: OPENCV_DISABLE_PROBES=1 OPENCV_LINK_PATHS="$(pwd)/opencv/build/install/lib/opencv4/3rdparty,$(pwd)/opencv/build/install/lib" OPENCV_LINK_LIBS=opencv_core,opencv_imgproc,opencv_imgcodecs,opencv_dnn OPENCV_INCLUDE_PATHS="$(pwd)/opencv/build/install/include/opencv4" cargo run
+      - run: OPENCV_DISABLE_PROBES=1 OPENCV_LINK_PATHS="$(pwd)/opencv/build/install/lib/opencv4/3rdparty,$(pwd)/opencv/build/install/lib" OPENCV_LINK_LIBS=opencv_imgproc,opencv_imgcodecs,opencv_dnn,opencv_core OPENCV_INCLUDE_PATHS="$(pwd)/opencv/build/install/include/opencv4" cargo run
 
     
